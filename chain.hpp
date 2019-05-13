@@ -22,7 +22,7 @@ namespace itertools {
             decltype(b.begin()) bBegin;
             decltype(b.end()) bEnd;
 
-            iterator(T1& a, T2& b):
+            iterator(T1& a, T2& b)  :
                 aBegin(a.begin()),
                 aEnd(a.end()),
                 bBegin(b.begin()),
@@ -38,7 +38,7 @@ namespace itertools {
 
             iterator() {}
 
-            auto operator*() const {
+            auto const operator*() const  {
                 if(aBegin != aEnd) return *aBegin;
                 else return *bBegin;
             }
@@ -72,11 +72,11 @@ namespace itertools {
 
         };// END OF CLASS ITERATOR
 
-        iterator begin() {
+        iterator begin()  {
             return iterator(a, b);
         }
 
-        iterator end() {
+        iterator end()  {
             return iterator(a, b, false);
         }
     };

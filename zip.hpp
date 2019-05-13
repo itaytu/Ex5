@@ -72,11 +72,11 @@ namespace itertools {
 
         };
 
-        iterator begin() {
+        iterator begin()  {
             return iterator(a, b);
         }
 
-        iterator end() {
+        iterator end()  {
             return iterator(a, b, false);
         }
 

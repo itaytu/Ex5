@@ -18,20 +18,19 @@ namespace itertools {
         class iterator {
         public:
             decltype(rng1) ptr;
-            //explicit iterator(T ptr = nullptr): ptr(ptr) {}
 
-            iterator(T pointer) : ptr(pointer){}
+            explicit iterator(T pointer) : ptr(pointer){}
 
             auto operator*() const {
                 return ptr;
             }
 
             iterator& operator++() {
-                ptr++;
+                ++ptr;
                 return *this;
             }
 
-           const iterator& operator++(int) {
+          const iterator operator++(int) {
                 iterator tmp = *this;
                 ptr++;
                 return tmp;

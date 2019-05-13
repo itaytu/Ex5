@@ -5,7 +5,6 @@
  * @since  2019-05
  */
 
-
 #include <iostream>
 using namespace std;
 
@@ -14,6 +13,7 @@ using namespace std;
 #include "zip.hpp"
 #include "product.hpp"
 #include "powerset.hpp"
+
 using namespace itertools;
 
 int main() {
@@ -26,7 +26,6 @@ int main() {
 	cout << endl << endl << "Range of chars: " << endl;
 	for (char i: range('a','e'))
 		cout << i << " ";    // a b c d
-
 
 	// Note: this example works even without your code.
 	// It shows that a string is also an "iterable" - it can be iterated with a for-each loop.
@@ -48,11 +47,11 @@ int main() {
     for (auto pair: zip(zip(range(1,4), string("xyz")),zip(string("abc"),range(6,9))))
         cout << pair << "  ";    // 1,x,a,6  2,y,b,7  3,z,c,8
 
-    /*cout << endl << endl << "Cartesian product of a range of ints and a string (can be of different sizes)" << endl;
+    cout << endl << endl << "Cartesian product of a range of ints and a string (can be of different sizes)" << endl;
     for (auto pair: product(range(1,4), string("hello")))
         cout << pair << "  ";    // 1,h  1,e  1,l  1,l  1,o  2,h  2,e  2,l  2,l  2,o  3,h  3,e  3,l  3,l  3,o
 
-    cout << endl << endl << "Power-set of range of ints " << endl;
+  /*  cout << endl << endl << "Power-set of range of ints " << endl;
     for (auto subset: powerset(range(1,4)))
         cout << subset;  // {}{1}{2}{1,2}{3}{1,3}{2,3}{1,2,3}
     cout << endl << endl << "Power-set of chain " << endl;

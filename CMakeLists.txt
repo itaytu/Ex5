@@ -3,9 +3,12 @@ project(Ex5)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Ex5 Demo.cpp
+add_executable(Ex5
         range.hpp
         chain.hpp
         zip.hpp
         product.hpp
-        powerset.hpp)
+
+        badkan.hpp
+        Test.cpp
+        )

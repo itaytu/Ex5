@@ -67,11 +67,11 @@ namespace itertools {
 
         };
 
-        iterator begin() {
+        iterator begin()  {
             return iterator(a, b);
         }
 
-        iterator end() {
+        iterator end()  {
             return iterator(a, b, false);
         }
     };
@@ -80,11 +80,6 @@ namespace itertools {
         return productC<T1, T2>(a,b);
     }
 
-/*    template <typename T1, typename T2>
-    ostream& itertools::productC::operator<<(ostream &os, const pair<T1,T2>& pair1) {
-        os << pair1.first << "," << pair1.second;
-        return os;
-    }*/
 }
 
 #endif //EX5_PRODUCT_HPP

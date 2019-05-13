@@ -46,7 +46,7 @@ namespace itertools {
 
         };// END OF CLASS ITERATOR
 
-        iterator begin() {
+        iterator begin()  {
             return iterator{rng1};
         }
 

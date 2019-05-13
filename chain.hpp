@@ -6,78 +6,78 @@
 namespace itertools {
     template <typename T1, typename T2> class chainC {
     public:
-        T1 p1;
-        T2 p2;
+        T1 a;
+        T2 b;
         chainC(T1& t1, T2& t2):
-            p1(t1),
-            p2(t2)
+            a(t1),
+            b(t2)
         {}
 
         chainC(){}
 
         class iterator {
         public:
-            decltype(p1.begin()) p1Start;
-            decltype(p1.end()) p1End;
-            decltype(p2.begin()) p2Start;
-            decltype(p2.end()) p2End;
+            decltype(a.begin()) aBegin;
+            decltype(a.end()) aEnd;
+            decltype(b.begin()) bBegin;
+            decltype(b.end()) bEnd;
 
-            iterator(T1& p1, T2& p2):
-                p1Start(p1.begin()),
-                p1End(p1.end()),
-                p2Start(p2.begin()),
-                p2End(p2.end())
+            iterator(T1& a, T2& b):
+                aBegin(a.begin()),
+                aEnd(a.end()),
+                bBegin(b.begin()),
+                bEnd(b.end())
             {}
 
-            iterator(T1& p1, T2& p2, bool flag):
-                p1Start(p1.end()),
-                p1End(p1.end()),
-                p2Start(p2.end()),
-                p2End(p2.end())
+            iterator(T1& a, T2& b, bool flag):
+                aBegin(a.end()),
+                aEnd(a.end()),
+                bBegin(b.end()),
+                bEnd(b.end())
             {}
 
             iterator() {}
 
             auto operator*() const {
-                if(p1Start != p1End) return *p1Start;
-                else return *p2Start;
+                if(aBegin != aEnd) return *aBegin;
+                else return *bBegin;
             }
 
             iterator& operator++() {
-                if(p1Start != p1End) p1Start++;
-                else if(p2Start != p2End) p2Start++;
+                if(aBegin != aEnd) ++aBegin;
+                else if(bBegin != bEnd) ++bBegin;
                 return *this;
             }
 
-           const iterator operator++(int) {
+          const iterator operator++(int) {
                 iterator tmp;
-                if(p1Start != p1End) {
-                    tmp = p1Start;
-                    p1Start++;
+                if(aBegin != aEnd) {
+                    tmp = aBegin;
+                    aBegin++;
                 }
                 else {
-                    tmp = p2Start;
-                    p2Start++;
+                    tmp = bBegin;
+                    bBegin++;
                 }
                 return tmp;
             }
 
             bool operator==(const iterator &it) const {
-                return (p1Start == it.p2Start || p2Start == it.p2Start);
+                return (aBegin == it.aBegin || bBegin == it.bBegin);
             }
 
             bool operator!=(const iterator& it) const {
-                return (p1Start != it.p1Start || p2Start != it.p2Start);
+                return (aBegin != it.aBegin || bBegin != it.bBegin);
             }
 
         };// END OF CLASS ITERATOR
 
         iterator begin() {
-            return iterator(p1, p2);
+            return iterator(a, b);
         }
 
         iterator end() {
-            return iterator(p1, p2, false);
+            return iterator(a, b, false);
         }
     };
 

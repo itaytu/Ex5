@@ -12,30 +12,17 @@ namespace itertools {
     public:
         T rng1, rng2;
 
-        rangeC(T& rng1, T& rng2) {
-            this->rng1 = rng1;
-            this->rng2 = rng2;
-        }
+        rangeC(T rng1, T rng2) :
+            rng1(rng1), rng2(rng2){}
 
-        rangeC(){}
-
-        //-------------------------------------------------------------------
-        // iterator related code:
-        // inner class and methods that return instances of it)
-        //-------------------------------------------------------------------
         class iterator {
-        private:
-            T ptr;
         public:
+            decltype(rng1) ptr;
             //explicit iterator(T ptr = nullptr): ptr(ptr) {}
 
-            iterator() { ptr = nullptr; }
+            iterator(T pointer) : ptr(pointer){}
 
-            explicit iterator(T pointer) {
-                ptr = pointer;
-            }
-
-            T operator*() const {
+            auto operator*() const {
                 return ptr;
             }
 
@@ -44,7 +31,7 @@ namespace itertools {
                 return *this;
             }
 
-           const iterator operator++(int) {
+           const iterator& operator++(int) {
                 iterator tmp = *this;
                 ptr++;
                 return tmp;

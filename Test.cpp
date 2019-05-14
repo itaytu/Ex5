@@ -28,6 +28,7 @@ int main() {
         string s1 = "Moshe";
         //--------------------rang-----------------------
         rangeC<int> intr(1, 5); // rang int
+        rangeC<int> int3(1, 3);
         rangeC<int> intr1(4, 8); //rang int
         rangeC<int> intr2(10, 15); //rang int
         rangeC<double> dour(5.1, 9.1); //rang double
@@ -54,9 +55,9 @@ int main() {
 
 
         //------------------powerset------------------
-        /*      powersetC<rangeC<int>> powR(intr);
-              powersetC<chainC<rangeC<char>,rangeC<char>>> powChainOfRangChar(charC1);*/
-
+              powersetC<rangeC<int>> powR(int3);
+              powersetC<chainC<rangeC<char>,rangeC<char>>> powChainOfRangChar(charC1);
+                cout<<iterable_to_string(powChainOfRangChar)<<endl;
         testcase.setname("range")
                 .CHECK_OUTPUT(iterable_to_string(intr1),("4,5,6,7,"))
                 .CHECK_OUTPUT(iterable_to_string(dour),("5.1,6.1,7.1,8.1,"))
@@ -83,6 +84,10 @@ int main() {
                 .CHECK_OUTPUT(iterable_to_string(proSTRS),("h,h,h,e,h,l,h,l,h,o,e,h,e,e,e,l,e,l,e,o,l,h,l,e,l,l,l,l,l,o,l,h,l,e,l,l,l,l,l,o,o,h,o,e,o,l,o,l,o,o,"))
                 .CHECK_OUTPUT(iterable_to_string(proTwoChains),("1,a,1,b,1,c,1,d,1,x,1,y,2,a,2,b,2,c,2,d,2,x,2,y,3,a,3,b,3,c,3,d,3,x,3,y,4,a,4,b,4,c,4,d,4,x,4,y,4,a,4,b,4,c,4,d,4,x,4,y,5,a,5,b,5,c,5,d,5,x,5,y,6,a,6,b,6,c,6,d,6,x,6,y,7,a,7,b,7,c,7,d,7,x,7,y,"))
                 ;
+        testcase.setname("powerset")
+                .CHECK_OUTPUT(iterable_to_string(powR),"{}{1}{2}{1,2}")
+                .CHECK_OUTPUT(iterable_to_string(powChainOfRangChar),",{},{a},{b},{ab},{c},{ac},{bc},{abc},{d},{ad},{bd},{abd},{cd},{acd},{bcd},{abcd},{x},{ax},{bx},{abx},{cx},{acx},{bcx},{abcx},{dx},{adx},{bdx},{abdx},{cdx},{acdx},{bcdx},{abcdx},{y},{ay},{by},{aby},{cy},{acy},{bcy},{abcy},{dy},{ady},{bdy},{abdy},{cdy},{acdy},{bcdy},{abcdy},{xy},{axy},{bxy},{abxy},{cxy},{acxy},{bcxy},{abcxy},{dxy},{adxy},{bdxy},{abdxy},{cdxy},{acdxy},{bcdxy},")
+        ;
 
         grade = testcase.grade();
     } else {

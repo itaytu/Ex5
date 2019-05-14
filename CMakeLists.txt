@@ -9,5 +9,5 @@ add_executable(Ex5
         zip.hpp
         product.hpp
         badkan.hpp
-        Demo.cpp
+        Test.cpp
         )

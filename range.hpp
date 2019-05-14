@@ -6,16 +6,19 @@
 namespace itertools {
     template <typename T> class rangeC {
     public:
-        T rng1, rng2;
-
-        rangeC(T rng1, T rng2) :
+        const T rng1;
+        const T rng2;
+        rangeC(){}
+        rangeC(const T& rng1, const T& rng2) :
             rng1(rng1), rng2(rng2){}
 
         class iterator {
         public:
-            decltype(rng1) ptr;
+           T ptr;
 
-            explicit iterator(T pointer) : ptr(pointer){}
+            iterator(const T pointer) : ptr(pointer){}
+
+            iterator() {}
 
             auto operator*() const {
                 return ptr;
@@ -42,15 +45,15 @@ namespace itertools {
 
         };// END OF CLASS ITERATOR
 
-        iterator begin()  {
+        iterator begin() const  {
             return iterator{rng1};
         }
 
-        iterator end() {
+        iterator end() const {
             return iterator{rng2};
         }
 
-        int size() {
+        int size() const {
             int counter=0;
             for (auto i: rangeC(rng1, rng2)) {
                 counter++;

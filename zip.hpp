@@ -12,7 +12,6 @@ namespace itertools {
         T2 b;
     public:
         zipC(T1 a, T2 b) : a(a), b(b) {}
-        zipC(){}
 
         class iterator {
         public:
@@ -39,7 +38,6 @@ namespace itertools {
             auto operator*() const {
                 return make_pair(*aBegin, *bBegin);
             }
-
 
             iterator& operator++() {
                 if(aBegin != aEnd) {

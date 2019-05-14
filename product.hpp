@@ -33,7 +33,8 @@ namespace itertools {
                     aBegin(a.end()),
                     aEnd(a.end()),
                     bBegin(b.end()),
-                    bEnd(b.end())
+                    bEnd(b.end()),
+                    bConst(b.begin())
             {}
 
             auto operator*() const {
@@ -41,23 +42,21 @@ namespace itertools {
             }
             iterator& operator++() {
                 if(aBegin != aEnd) {
-                    if(bBegin != bEnd) {
                         ++bBegin;
-                    }
-                    else {
-                        ++aBegin;
-                        bBegin = bConst;
-                    }
+                }
+                if(bBegin == bEnd) {
+                    bBegin = bConst;
+                    ++aBegin;
                 }
                 return *this;
             }
 
             bool operator==(const iterator &it) const {
-                return (aBegin == it.aBegin || bBegin == it.bBegin);
+                return (aBegin == it.aBegin && bBegin == it.bBegin);
             }
 
             bool operator!=(const iterator& it) const {
-                return (aBegin != it.aBegin || bBegin != it.bBegin);
+                return (aBegin != it.aBegin && bBegin != it.bBegin);
             }
         };
 

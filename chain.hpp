@@ -8,12 +8,11 @@ namespace itertools {
     public:
         T1 p1;
         T2 p2;
+
         chainC(T1& t1, T2& t2):
             p1(t1),
             p2(t2)
         {}
-
-        chainC(){}
 
         class iterator {
         public:
@@ -35,8 +34,6 @@ namespace itertools {
                 p2Start(p2.end()),
                 p2End(p2.end())
             {}
-
-            iterator() {}
 
             auto operator*() const {
                 if(p1Start != p1End) return *p1Start;

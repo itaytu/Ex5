@@ -64,7 +64,7 @@ namespace itertools {
             return iterator(a, b, false);
         }
 
-        int sizeOf(){
+        int size(){
             int count = 0;
             for (auto i : chainC(a,b)) {
                 count++;

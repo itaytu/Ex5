@@ -64,6 +64,10 @@ namespace itertools {
             return iterator(a, b, false);
         }
 
+        int size() {
+            return a.length() + b.length();
+        }
+
     };
 
     template<typename T1, typename T2> zipC<T1, T2> zip(T1 a, T2 b) {

@@ -67,6 +67,11 @@ namespace itertools {
         iterator end()  {
             return iterator(a, b, false);
         }
+
+        int length() {
+            return a.length() + b.length();
+        }
+
     };
 
     template<typename T1, typename T2> productC<T1, T2> product(T1 a, T2 b) {

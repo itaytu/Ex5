@@ -50,7 +50,7 @@ namespace itertools {
             return iterator{rng2};
         }
 
-        int sizeOF() {
+        int size() {
             int counter=0;
             for (auto i: rangeC(rng1, rng2)) {
                 counter++;

@@ -36,7 +36,12 @@ namespace itertools {
                 bEnd(b.end())
             {}
 
-            iterator() {}
+            iterator(const T1& a, const T2& b) :
+                    aBegin(a.begin()),
+                    aEnd(a.end()),
+                    bBegin(b.begin()),
+                    bEnd(b.end())
+            {}
 
             auto const operator*() const  {
                 if(aBegin != aEnd) return *aBegin;
@@ -79,6 +84,15 @@ namespace itertools {
         iterator end()  {
             return iterator(a, b, false);
         }
+
+        iterator begin() const {
+            return iterator(a, b);
+        }
+
+        iterator end() const  {
+            return iterator(a, b, false);
+        }
+
     };
 
     template<typename T1, typename T2> chainC<T1, T2> chain(T1 a, T2 b) {

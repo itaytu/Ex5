@@ -19,7 +19,9 @@ namespace itertools {
         public:
             decltype(rng1) ptr;
 
-            explicit iterator(T pointer) : ptr(pointer){}
+            iterator(T pointer) : ptr(pointer){}
+
+            iterator(const T& pointer) : ptr(pointer) {}
 
             auto operator*() const {
                 return ptr;
@@ -52,6 +54,14 @@ namespace itertools {
 
         iterator end() {
             return iterator{rng2};
+        }
+
+        iterator begin() const {
+            return iterator(rng1);
+        }
+
+        iterator end() const  {
+            return iterator(rng2);
         }
     };
       template<typename T> rangeC<T> range(T a, T b) {

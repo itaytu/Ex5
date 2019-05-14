@@ -1,10 +1,5 @@
-//
-// Created by moshe on 13/05/2019.
-//
 #include <iostream>
 
-
-using namespace std;
 #include "range.hpp"
 #include "chain.hpp"
 #include "zip.hpp"
@@ -12,10 +7,12 @@ using namespace std;
 #include "powerset.hpp"
 #include "badkan.hpp"
 #include "iostream"
-using namespace itertools;
+
 using namespace std;
+using namespace itertools;
+
 template<typename Iterable>
-string iterable_to_string( Iterable& iterable) {
+string iterable_to_string(const Iterable& iterable) {
     ostringstream ostr;
     for (decltype(*iterable.begin()) i: iterable)
         ostr << i << ",";

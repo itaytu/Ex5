@@ -1,12 +1,10 @@
-//
-// Created by Itayt on 5/5/2019.
-//
-
 #ifndef EX5_ZIP_HPP
 #define EX5_ZIP_HPP
 
 #include <utility>
 #include "chain.hpp"
+
+using namespace std;
 
 namespace itertools {
     template <typename T1, typename T2> class zipC {
@@ -34,6 +32,13 @@ namespace itertools {
                     aBegin(a.end()),
                     aEnd(a.end()),
                     bBegin(b.end()),
+                    bEnd(b.end())
+            {}
+
+            iterator(const T1& a, const T2& b) :
+                    aBegin(a.begin()),
+                    aEnd(a.end()),
+                    bBegin(b.begin()),
                     bEnd(b.end())
             {}
 
@@ -77,6 +82,14 @@ namespace itertools {
         }
 
         iterator end()  {
+            return iterator(a, b, false);
+        }
+
+        iterator begin() const {
+            return iterator(a, b);
+        }
+
+        iterator end() const  {
             return iterator(a, b, false);
         }
 

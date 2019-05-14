@@ -51,11 +51,9 @@ namespace itertools {
         }
 
         int sizeOF() {
-            T i(rng1);
             int counter=0;
-            while(i!= rng2) {
+            for (auto i: rangeC(rng1, rng2)) {
                 counter++;
-                ++i;
             }
             return counter;
         }

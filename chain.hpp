@@ -64,6 +64,14 @@ namespace itertools {
             return iterator(a, b, false);
         }
 
+        int sizeOf(){
+            int count = 0;
+            for (auto i : chainC(a,b)) {
+                count++;
+            }
+            return count;
+        }
+
     };
 
     template<typename T1, typename T2> chainC<T1, T2> chain(T1 a, T2 b) {

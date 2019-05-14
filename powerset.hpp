@@ -1,4 +1,3 @@
-/*
 #ifndef EX5_POWERSET_HPP
 #define EX5_POWERSET_HPP
 
@@ -6,7 +5,9 @@ namespace itertools {
     template <typename T>
     class powersetC {
         T a;
+
         powersetC(T t) :a(t){}
+
         class iterator{
             decltype(a.begin()) aBegin;
 
@@ -34,4 +35,4 @@ namespace itertools {
 }
 
 #endif //EX5_POWERSET_HPP
-*/
+

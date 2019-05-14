@@ -49,6 +49,17 @@ namespace itertools {
         iterator end() {
             return iterator{rng2};
         }
+
+        int sizeOF() {
+            T i(rng1);
+            int counter=0;
+            while(i!= rng2) {
+                counter++;
+                ++i;
+            }
+            return counter;
+        }
+
     };
 
       template<typename T> rangeC<T> range(T a, T b) {

@@ -1,7 +1,3 @@
-//
-// Created by Itayt on 5/5/2019.
-//
-
 #ifndef EX5_PRODUCT_HPP
 #define EX5_PRODUCT_HPP
 
@@ -63,8 +59,6 @@ namespace itertools {
             bool operator!=(const iterator& it) const {
                 return (aBegin != it.aBegin || bBegin != it.bBegin);
             }
-
-
         };
 
         iterator begin()  {

@@ -1,7 +1,3 @@
-//
-// Created by Itayt on 5/5/2019.
-//
-
 #ifndef EX5_RANGE_HPP
 #define EX5_RANGE_HPP
 
@@ -19,9 +15,7 @@ namespace itertools {
         public:
             decltype(rng1) ptr;
 
-            iterator(T pointer) : ptr(pointer){}
-
-            iterator(const T& pointer) : ptr(pointer) {}
+            explicit iterator(T pointer) : ptr(pointer){}
 
             auto operator*() const {
                 return ptr;
@@ -55,15 +49,8 @@ namespace itertools {
         iterator end() {
             return iterator{rng2};
         }
-
-        iterator begin() const {
-            return iterator(rng1);
-        }
-
-        iterator end() const  {
-            return iterator(rng2);
-        }
     };
+
       template<typename T> rangeC<T> range(T a, T b) {
         return rangeC<T>(a,b);
     }

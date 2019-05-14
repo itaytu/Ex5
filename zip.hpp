@@ -35,17 +35,12 @@ namespace itertools {
                     bEnd(b.end())
             {}
 
-            iterator(const T1& a, const T2& b) :
-                    aBegin(a.begin()),
-                    aEnd(a.end()),
-                    bBegin(b.begin()),
-                    bEnd(b.end())
-            {}
-
 
             auto operator*() const {
                 return make_pair(*aBegin, *bBegin);
             }
+
+
             iterator& operator++() {
                 if(aBegin != aEnd) {
                     ++aBegin;
@@ -54,18 +49,6 @@ namespace itertools {
                 return *this;
             }
 
-         /*   const iterator operator++(int) {
-                iterator tmp1;
-                iterator tmp2;
-                if(aBegin != aEnd) {
-                    tmp1 = aBegin;
-                    aBegin++;
-                    tmp2 = bBegin;
-                    bBegin++;
-                }
-                return make_pair(tmp1, tmp2);
-            }*/
-
             bool operator==(const iterator &it) const {
                 return (aBegin == it.aBegin || bBegin == it.bBegin);
             }
@@ -73,23 +56,13 @@ namespace itertools {
             bool operator!=(const iterator& it) const {
                 return (aBegin != it.aBegin || bBegin != it.bBegin);
             }
-
-
         };
 
-        iterator begin()  {
+        iterator begin() {
             return iterator(a, b);
         }
 
-        iterator end()  {
-            return iterator(a, b, false);
-        }
-
-        iterator begin() const {
-            return iterator(a, b);
-        }
-
-        iterator end() const  {
+        iterator end() {
             return iterator(a, b, false);
         }
 

@@ -6,10 +6,10 @@
 namespace itertools {
     template <typename T1, typename T2> class chainC {
     public:
-        T1 a;
-        T2 b;
-
-        chainC(T1& a, T2& b):
+        const T1 a;
+        const T2 b;
+        chainC(){}
+        chainC(const T1& a, const T2& b):
             a(a),
             b(b)
         {}
@@ -21,19 +21,21 @@ namespace itertools {
             decltype(b.begin()) bBegin;
             decltype(b.end()) bEnd;
 
-            iterator(T1& a, T2& b):
+            iterator(const T1& a, const T2& b):
                 aBegin(a.begin()),
                 aEnd(a.end()),
                 bBegin(b.begin()),
                 bEnd(b.end())
             {}
 
-            iterator(T1& a, T2& b, bool flag):
+            iterator(const T1& a, const T2& b, bool flag):
                 aBegin(a.end()),
                 aEnd(a.end()),
                 bBegin(b.end()),
                 bEnd(b.end())
             {}
+
+            iterator(){}
 
             auto operator*() const {
                 if(aBegin != aEnd) return *aBegin;
@@ -56,15 +58,15 @@ namespace itertools {
 
         };// END OF CLASS ITERATOR
 
-        iterator begin() {
+        iterator begin() const {
             return iterator(a, b);
         }
 
-        iterator end() {
+        iterator end() const {
             return iterator(a, b, false);
         }
 
-        int size(){
+        int size() const {
             int count = 0;
             for (auto i : chainC(a,b)) {
                 count++;

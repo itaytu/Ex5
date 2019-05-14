@@ -9,14 +9,12 @@ namespace itertools {
     template <typename T>
     class powersetC {
     public:
-        T a;
-        int length;
-        int size;
-
-        powersetC(T t) :
+        const T a;
+         const int size;
+        powersetC(){}
+        powersetC(const T& t) :
         a(t),
-        length(a.size()),
-        size(pow(2, length))
+        size(pow(2, a.size()))
         {}
 
         class iterator{
@@ -28,13 +26,13 @@ namespace itertools {
             int end;
             string powStr = "";
 
-            iterator(T& a, int t) :
-            aBegin(a),
-            aConst(a),
-            begin(t),
-            end(pow(2,a.size())),
-            length(a.size())
-            {}
+            iterator(const T& a, int t) :
+            aBegin(a.begin()),
+            aConst(a.begin())
+            {
+             begin=t;
+             end=pow(2,a.size());
+             length=10;}
 
             auto operator*() const{
                 return powStr;
@@ -43,20 +41,26 @@ namespace itertools {
             iterator& operator++(){
                 powStr= "";
                 if(begin != end) {
+                    powStr += "{";
                     for (int i = 0; i < length; ++i) {
                         if((begin & (1 << i))) {
+
                             if(*aBegin <= 'z' && *aBegin >= 'a'){
+                                powStr += *aBegin ;
                             }
-                              // powStr += "{" + std::string(*aBegin) + "}";
+
                             else {
-                               // powStr += "{" + to_string(*aBegin) + "}";
+                                powStr += to_string(*aBegin) ;
                             }
+
                         }
                             ++aBegin;
                     }
                     begin++;
+                    powStr += "}";
                 }
                 aBegin = aConst;
+                return *this;
             }
 
             bool operator==(const iterator &it) const{
@@ -69,11 +73,11 @@ namespace itertools {
 
         };
 
-        iterator begin() {
+        iterator begin() const {
             return iterator(a, 0);
         }
 
-        iterator end() {
+        iterator end() const {
             return iterator(a, size);
         }
     };

@@ -12,7 +12,7 @@ using namespace std;
 using namespace itertools;
 
 template<typename Iterable>
-string iterable_to_string( const  Iterable& iterable) {
+string iterable_to_string( Iterable& iterable) {
     ostringstream ostr;
     for (decltype(*iterable.begin()) i: iterable)
         ostr << i << ",";

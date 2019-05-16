@@ -10,11 +10,11 @@ namespace itertools {
     class powersetC {
     public:
         const T a;
-         const int size;
+        const int size;
         powersetC(){}
         powersetC(const T& t) :
-        a(t),
-        size(pow(2, a.size()))
+                a(t),
+                size(pow(2, a.size()))
         {}
 
         class iterator{
@@ -22,17 +22,17 @@ namespace itertools {
             decltype(a.begin()) aBegin;
             decltype(a.begin()) aConst;
             int length;
-            int begin = 0;
+            int begin;
             int end;
-            string powStr = "";
+            string powStr;
 
             iterator(const T& a, int t) :
-            aBegin(a.begin()),
-            aConst(a.begin())
+                    aBegin(a.begin()),
+                    aConst(a.begin())
             {
-             begin=t;
-             end=pow(2,a.size());
-             length=10;}
+                begin=t;
+                end=pow(2,a.size());
+                length=a.size();}
 
             auto operator*() const{
                 return powStr;
@@ -44,18 +44,17 @@ namespace itertools {
                     powStr += "{";
                     for (int i = 0; i < length; ++i) {
                         if((begin & (1 << i))) {
-
                             if(*aBegin <= 'z' && *aBegin >= 'a'){
                                 powStr += *aBegin ;
                             }
-
                             else {
                                 powStr += to_string(*aBegin) ;
                             }
-
+                            powStr += ",";
                         }
-                            ++aBegin;
+                        ++aBegin;
                     }
+                    if(powStr.back() == ',') powStr = powStr.substr(0, powStr.size()-1);
                     begin++;
                     powStr += "}";
                 }

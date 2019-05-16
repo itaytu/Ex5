@@ -34,11 +34,7 @@ namespace itertools {
                 end=pow(2,a.size());
                 length=a.size();}
 
-            auto operator*() const{
-                return powStr;
-            }
-
-            iterator& operator++(){
+            auto operator*(){
                 powStr= "";
                 if(begin != end) {
                     powStr += "{";
@@ -55,9 +51,13 @@ namespace itertools {
                         ++aBegin;
                     }
                     if(powStr.back() == ',') powStr = powStr.substr(0, powStr.size()-1);
-                    begin++;
                     powStr += "}";
                 }
+                return powStr;
+            }
+
+            iterator& operator++(){
+                begin++;
                 aBegin = aConst;
                 return *this;
             }

@@ -55,10 +55,10 @@ int main() {
 
 
         //------------------powerset------------------
-              powersetC<rangeC<int>> powR(int3);
-              powersetC<chainC<rangeC<char>,rangeC<char>>> powChainOfRangChar(charC1);
-               cout<<iterable_to_string(powR)<<endl;
-   /*     testcase.setname("range")
+        powersetC<rangeC<int>> powR(int3);
+        powersetC<chainC<rangeC<char>,rangeC<char>>> powChainOfRangChar(charC1);
+
+        testcase.setname("range")
                 .CHECK_OUTPUT(iterable_to_string(intr1),("4,5,6,7,"))
                 .CHECK_OUTPUT(iterable_to_string(dour),("5.1,6.1,7.1,8.1,"))
                 .CHECK_OUTPUT(iterable_to_string(charr),("a,b,c,d,"))
@@ -85,9 +85,9 @@ int main() {
                 .CHECK_OUTPUT(iterable_to_string(proTwoChains),("1,a,1,b,1,c,1,d,2,a,2,b,2,c,2,d,3,a,3,b,3,c,3,d,4,a,4,b,4,c,4,d,4,a,4,b,4,c,4,d,5,a,5,b,5,c,5,d,6,a,6,b,6,c,6,d,7,a,7,b,7,c,7,d,"))
                 ;
         testcase.setname("powerset")
-                .CHECK_OUTPUT(iterable_to_string(powR),"{}{1}{2}{1,2}")
-                .CHECK_OUTPUT(iterable_to_string(powChainOfRangChar),",{},{a},{b},{ab},{c},{ac},{bc},{abc},{d},{ad},{bd},{abd},{cd},{acd},{bcd},{abcd},{x},{ax},{bx},{abx},{cx},{acx},{bcx},{abcx},{dx},{adx},{bdx},{abdx},{cdx},{acdx},{bcdx},{abcdx},{y},{ay},{by},{aby},{cy},{acy},{bcy},{abcy},{dy},{ady},{bdy},{abdy},{cdy},{acdy},{bcdy},{abcdy},{xy},{axy},{bxy},{abxy},{cxy},{acxy},{bcxy},{abcxy},{dxy},{adxy},{bdxy},{abdxy},{cdxy},{acdxy},{bcdxy},")
-        ;*/
+                .CHECK_OUTPUT(iterable_to_string(powR),"{},{1},{2},{1,2},")
+                .CHECK_OUTPUT(iterable_to_string(powChainOfRangChar),"{},{a},{b},{a,b},{c},{a,c},{b,c},{a,b,c},{d},{a,d},{b,d},{a,b,d},{c,d},{a,c,d},{b,c,d},{a,b,c,d},{x},{a,x},{b,x},{a,b,x},{c,x},{a,c,x},{b,c,x},{a,b,c,x},{d,x},{a,d,x},{b,d,x},{a,b,d,x},{c,d,x},{a,c,d,x},{b,c,d,x},{a,b,c,d,x},{y},{a,y},{b,y},{a,b,y},{c,y},{a,c,y},{b,c,y},{a,b,c,y},{d,y},{a,d,y},{b,d,y},{a,b,d,y},{c,d,y},{a,c,d,y},{b,c,d,y},{a,b,c,d,y},{x,y},{a,x,y},{b,x,y},{a,b,x,y},{c,x,y},{a,c,x,y},{b,c,x,y},{a,b,c,x,y},{d,x,y},{a,d,x,y},{b,d,x,y},{a,b,d,x,y},{c,d,x,y},{a,c,d,x,y},{b,c,d,x,y},{a,b,c,d,x,y},")
+                ;
 
         grade = testcase.grade();
     } else {

@@ -10,7 +10,7 @@ namespace itertools {
     class powerset {
     public:
         const T a;
-        const int size;
+        int size;
 
         powerset(){}
         powerset(const T& t) :

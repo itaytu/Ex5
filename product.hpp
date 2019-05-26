@@ -44,12 +44,10 @@ namespace itertools {
                 return make_pair(*aBegin, *bBegin);
             }
             iterator& operator++() {
-                if(aBegin != aEnd) {
-                        ++bBegin;
-                }
-                if(bBegin == bEnd) {
-                    bBegin = bConst;
+                ++bBegin;
+                if (!(bBegin != pair1.second)) {
                     ++aBegin;
+                    bBegin = pair1.first;
                 }
                 return *this;
             }

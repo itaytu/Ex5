@@ -70,10 +70,6 @@ namespace itertools {
         }
     };
 
-    template <typename T> powersetC<T> powerset(T t){
-        return powersetC<T>(t);
-    }
-
     template<typename T> ostream &operator<<(ostream &out, pair<unsigned int, T> &p)
     {
         string ans="";

@@ -7,13 +7,13 @@
 
 namespace itertools {
     template <typename T>
-    class powersetC {
+    class powerset {
     public:
         const T a;
         const int size;
 
-        powersetC(){}
-        powersetC(const T& t) :
+        powerset(){}
+        powerset(const T& t) :
                 a(t)
         {
             int s=0;

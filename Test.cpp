@@ -12,12 +12,13 @@ using namespace std;
 using namespace itertools;
 
 template<typename Iterable>
-string iterable_to_string( Iterable& iterable) {
+string iterable_to_string(const Iterable& iterable) {
     ostringstream ostr;
     for (decltype(*iterable.begin()) i: iterable)
         ostr << i << ",";
     return ostr.str();
 }
+
 int main() {
     badkan::TestCase testcase;
     int grade = 0;

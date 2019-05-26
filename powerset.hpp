@@ -63,7 +63,7 @@ namespace itertools {
             }
 
             bool operator==(const iterator &it) const{
-                return(aBegin == it.aBegin);
+                return(begin == it.begin);
             }
 
             bool operator!=(const iterator& it) const {

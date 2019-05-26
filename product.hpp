@@ -7,10 +7,10 @@
 namespace itertools {
     template <typename T1, typename T2>
     class productC {
-        T1 a;
-        T2 b;
+        const T1 a;
+        const T2 b;
     public:
-        productC(T1& a, T2& b) : a(a), b(b){}
+        productC(const T1& a, const T2& b) : a(a), b(b){}
         productC(){}
 
         class iterator{
@@ -21,7 +21,7 @@ namespace itertools {
             decltype(b.begin()) bBegin;
             decltype(b.end()) bEnd;
 
-            iterator(T1& a, T2& b) :
+            iterator(const T1& a, const T2& b) :
                     aBegin(a.begin()),
                     aEnd(a.end()),
                     bBegin(b.begin()),
@@ -29,7 +29,7 @@ namespace itertools {
                     bConst(b.begin())
             {}
 
-            iterator(T1& a, T2& b, bool flag) :
+            iterator(const T1& a, const T2& b, const bool flag) :
                     aBegin(a.end()),
                     aEnd(a.end()),
                     bBegin(b.end()),
@@ -60,16 +60,16 @@ namespace itertools {
             }
         };
 
-        iterator begin()  {
+        iterator begin() const {
             return iterator(a, b);
         }
 
-        iterator end()  {
+        iterator end() const {
             return iterator(a, b, false);
         }
 
-        int length() {
-            return a.length() + b.length();
+        int size() const {
+            return a.size() + b.size();
         }
 
     };

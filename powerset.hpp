@@ -11,78 +11,94 @@ namespace itertools {
     public:
         const T a;
         const int size;
+
         powersetC(){}
         powersetC(const T& t) :
-                a(t),
-                size(pow(2, a.size()))
-        {}
+                a(t)
+        {
+            int s=0;
+            auto start=a.begin();
+            while (start!=a.end()){
+                ++start;
+                s++;
+            }
+            size=s;
+        }
+
 
         class iterator{
         public:
-            decltype(a.begin()) aBegin;
+            std::pair <unsigned int, T> pair1;
+     /*       decltype(a.begin()) aBegin;
             decltype(a.begin()) aConst;
             int length;
             int begin;
             int end;
-            string powStr;
+            string powStr;*/
 
-            iterator(const T& a, int t) :
-                    aBegin(a.begin()),
-                    aConst(a.begin())
-            {
-                begin=t;
-                end=pow(2,a.size());
-                length=a.size();}
+            iterator(const std::pair  <unsigned int, T> & p2) :
+                    pair1(p2){}
 
             auto operator*(){
-                powStr= "";
-                if(begin != end) {
-                    powStr += "{";
-                    for (int i = 0; i < length; ++i) {
-                        if((begin & (1 << i))) {
-                            if(*aBegin <= 'z' && *aBegin >= 'a'){
-                                powStr += *aBegin ;
-                            }
-                            else {
-                                powStr += to_string(*aBegin) ;
-                            }
-                            powStr += ",";
-                        }
-                        ++aBegin;
-                    }
-                    if(powStr.back() == ',') powStr = powStr.substr(0, powStr.size()-1);
-                    powStr += "}";
-                }
-                return powStr;
+                return pair1;
             }
 
             iterator& operator++(){
-                begin++;
-                aBegin = aConst;
+                pair1.first++;
                 return *this;
             }
 
             bool operator==(const iterator &it) const{
-                return(begin == it.begin);
+                return(pair1.first == it.pair1.first);
             }
 
             bool operator!=(const iterator& it) const {
-                return (begin != it.begin);
+                return (pair1.first != it.pair1.first);
             }
 
         };
 
         iterator begin() const {
-            return iterator(a, 0);
-        }
+            return iterator(std::pair <unsigned int, T> (0,a));        }
 
         iterator end() const {
-            return iterator(a, size);
+            int i=1;
+            for(int k=0;k<size;k++){
+                i=i<<1;
+            }
+            return iterator(std::pair <unsigned int, T> (i,a));
         }
     };
 
     template <typename T> powersetC<T> powerset(T t){
         return powersetC<T>(t);
+    }
+
+    template<typename T> ostream &operator<<(ostream &out, pair<unsigned int, T> &p)
+    {
+        string ans="";
+        out << '{';
+        bool first=true;
+        auto startT = p.second.begin() ;
+        auto endT = p.second.end();
+        int i=1;
+        while(startT!=endT)
+        {
+            if(i&p.first)
+            {
+                if(first)
+                {
+                    out<<*startT;
+                    first=false;
+                }
+                else
+                    out<<','<<*startT;
+            }
+            i=i<<1;
+            ++startT;
+        }
+        out <<'}';
+        return out;
     }
 }
 

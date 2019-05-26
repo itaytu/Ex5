@@ -6,12 +6,12 @@
 
 namespace itertools {
     template <typename T1, typename T2>
-    class productC {
+    class product {
         const T1 a;
         const T2 b;
     public:
-        productC(const T1& a, const T2& b) : a(a), b(b){}
-        productC(){}
+        product(const T1& a, const T2& b) : a(a), b(b){}
+        product(){}
 
         class iterator{
         public:
@@ -20,13 +20,15 @@ namespace itertools {
             decltype(a.end()) aEnd;
             decltype(b.begin()) bBegin;
             decltype(b.end()) bEnd;
+            pair < decltype(b.begin()), decltype(b.end())> pair1;
 
             iterator(const T1& a, const T2& b) :
                     aBegin(a.begin()),
                     aEnd(a.end()),
                     bBegin(b.begin()),
                     bEnd(b.end()),
-                    bConst(b.begin())
+                    bConst(b.begin()),
+                    pair1(std::make_pair(b.begin(),b.end()))
             {}
 
             iterator(const T1& a, const T2& b, const bool flag) :
@@ -34,7 +36,8 @@ namespace itertools {
                     aEnd(a.end()),
                     bBegin(b.end()),
                     bEnd(b.end()),
-                    bConst(b.begin())
+                    bConst(b.begin()),
+                    pair1(std::make_pair(b.begin(),b.end()))
             {}
 
             auto operator*() const {
@@ -74,9 +77,6 @@ namespace itertools {
 
     };
 
-    template<typename T1, typename T2> productC<T1, T2> product(T1 a, T2 b) {
-        return productC<T1, T2>(a,b);
-    }
 
 }
 

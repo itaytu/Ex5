@@ -49,15 +49,15 @@ int main() {
         zipC<zipC<rangeC<int>, string>, zipC<rangeC<double>, string>> zipzip(zipIS, zipDS);
 
         //------------------product-------------------------
-        productC<rangeC<int>, string> proIntS(intr, s);
-        productC<rangeC<double>, string> proDoubleS(dour, s);
-        productC<string, string> proSTRS(s, s);
-        productC<chainC<rangeC<int>, rangeC<int>>, chainC<rangeC<char>, rangeC<char>>> proTwoChains(intC, charC1);
+        product<rangeC<int>, string> proIntS(intr, s);
+        product<rangeC<double>, string> proDoubleS(dour, s);
+        product<string, string> proSTRS(s, s);
+        product<chainC<rangeC<int>, rangeC<int>>, chainC<rangeC<char>, rangeC<char>>> proTwoChains(intC, charC1);
 
 
         //------------------powerset------------------
-        powersetC<rangeC<int>> powR(int3);
-        powersetC<chainC<rangeC<char>,rangeC<char>>> powChainOfRangChar(charC1);
+        powerset<rangeC<int>> powR(int3);
+        powerset<chainC<rangeC<char>,rangeC<char>>> powChainOfRangChar(charC1);
 
         testcase.setname("range")
                 .CHECK_OUTPUT(iterable_to_string(intr1),("4,5,6,7,"))
